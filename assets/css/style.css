@@ -1049,3 +1049,54 @@ hr {
         text-align: center;
     }
 }
+
+
+/* =========================================
+   16. HERO PROFILE IMAGE
+========================================= */
+
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 420px;
+    overflow: hidden;
+}
+
+.hero-image-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(147, 102, 242, 0.20);
+    filter: blur(90px);
+    bottom: 40px;
+    z-index: 0;
+}
+
+.hero-profile-image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    max-width: 390px;
+    max-height: 450px;
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero-visual {
+        min-height: 320px;
+        margin-top: 25px;
+    }
+
+    .hero-profile-image {
+        max-width: 280px;
+        max-height: 340px;
+    }
+}

@@ -1,10 +1,25 @@
 
 import streamlit as st
+import base64
+from pathlib import Path
 
 
 def render_hero(t):
     """Render the main introduction section."""
 
+    image_path = (
+        Path(__file__).resolve().parents[1]
+        / "assets"
+        / "images"
+        / "profile.png"
+    )
+
+    image_base64 = base64.b64encode(
+        image_path.read_bytes()
+    ).decode("utf-8")
+
+    profile_image = f"data:image/png;base64,{image_base64}"
+    
     hero_html = f"""
     <section class="hero">
 
@@ -36,35 +51,12 @@ def render_hero(t):
         </div>
 
         <div class="hero-visual">
-            <div class="mini-chart">
-
-                <div class="chart-label">DATA OVERVIEW</div>
-
-                <div class="chart-area">
-                    <div class="chart-grid">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="chart-bars">
-                        <div class="chart-bar" style="--height: 32%"></div>
-                        <div class="chart-bar" style="--height: 48%"></div>
-                        <div class="chart-bar" style="--height: 40%"></div>
-                        <div class="chart-bar" style="--height: 72%"></div>
-                        <div class="chart-bar" style="--height: 62%"></div>
-                        <div class="chart-bar active" style="--height: 88%"></div>
-                    </div>
-                </div>
-
-                <div class="chart-footer">
-                    <span>ANALYSIS</span>
-                    <span>INSIGHTS</span>
-                    <span>RESULTS</span>
-                </div>
-
-            </div>
+            <div class="hero-image-glow"></div>
+            <img
+                src="{profile_image}"
+                alt="Portrait de Thomas Constantin"
+                class="hero-profile-image"
+            >
         </div>
 
     </section>
